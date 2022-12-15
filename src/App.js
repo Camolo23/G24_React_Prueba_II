@@ -16,11 +16,33 @@ import MyNavbar from './components/Navbar';
 import Home from "./views/Home";
 import Carrito from './views/Carrito';
 
+
 function App() {
+
+  // armando el contexto 
+
+  const endpoint = "/pizzas.json";
+
+  const [ pizzasInfo, setPizzasInfo ] = useState([]);
+
+  const getPizzas = () => {
+    fetch(endpoint).then(resp => resp.json())
+      .then(data => (
+        setPizzasInfo(data)
+      ));
+  };
+
+  useEffect(() => {
+    getPizzas();
+  }, []);
+
+  // seteando el contexto
+
+  const estadoGlobal = { pizzasInfo }
 
   return (
     <>
-      <MyContext.Provider value={{}}>
+      <MyContext.Provider value={estadoGlobal}>
         <BrowserRouter>
           <MyNavbar />
 

@@ -9,7 +9,7 @@ function MyNavbar() {
             <Container>
                 <Navbar.Brand href="/" >🍕 <strong>Pizzería Mamma Mia!</strong></Navbar.Brand>
                 <Nav className="ms-auto">
-                    <Nav.Link href="/carrito" className='rounded text-black-50 bg-light'>🛒 $13.990</Nav.Link>
+                    <Nav.Link href="/carrito" className='rounded text-black-50 bg-light p-2'>🛒 $13.990</Nav.Link>
                 </Nav>
             </Container>
         </Navbar>
