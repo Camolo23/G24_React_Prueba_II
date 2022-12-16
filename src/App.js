@@ -16,7 +16,7 @@ import MyNavbar from './components/Navbar';
 import Home from "./views/Home";
 import Carrito from './views/Carrito';
 import DetallePizza from './views/DetallePizza';
-
+import NotFound from './views/NotFound';
 
 function App() {
 
@@ -53,6 +53,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/carrito' element={<Carrito />} />
             <Route path='/pizza/:id' element={<DetallePizza />} />
+            <Route path="*" element={ <NotFound /> } />
           </Routes>
 
         </BrowserRouter>

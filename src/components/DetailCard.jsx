@@ -1,13 +1,12 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 
-import NotFound from '../views/NotFound';
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
 import MyContext from "../my-context";
+import Loading from "./Loading";
 
 function DetailCard() {
 
@@ -31,7 +30,7 @@ function DetailCard() {
     return (
         <div>
             {selectedPizza.ingredients === undefined ?
-                <NotFound />
+                <Loading />
                 :
                 <Row xs={1} md={2} className="m-5">
                     <Col>
