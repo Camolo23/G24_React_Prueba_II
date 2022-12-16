@@ -15,11 +15,14 @@ import MyNavbar from './components/Navbar';
 // views
 import Home from "./views/Home";
 import Carrito from './views/Carrito';
+import DetallePizza from './views/DetallePizza';
 
 
 function App() {
 
   // armando el contexto 
+
+    // obtener pizzas
 
   const endpoint = "/pizzas.json";
 
@@ -49,6 +52,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/carrito' element={<Carrito />} />
+            <Route path='/pizza/:id' element={<DetallePizza />} />
           </Routes>
 
         </BrowserRouter>
