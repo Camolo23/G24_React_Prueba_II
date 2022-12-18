@@ -12,7 +12,7 @@ import MyContext from "../my-context";
 
 function Cards() {
 
-    const { pizzasInfo } = useContext(MyContext);
+    const { pizzasInfo, addToCart } = useContext(MyContext);
 
     function aplicarMayuscula(str) {
         const palabras = str.split(" ").map(palabra => {
@@ -58,6 +58,7 @@ function Cards() {
                                     </Col>
                                     <Col>
                                         <Button
+                                            onClick={() => addToCart(pizza.id, pizza.name, pizza.price, pizza.img)}
                                             variant="danger">
                                             <span className='bg-light rounded-pill p-1 me-1'>🛒</span>
                                             Añadir

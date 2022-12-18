@@ -39,9 +39,21 @@ function App() {
     getPizzas();
   }, []);
 
+    // gestionar carrito
+
+  const [carrito, setCarrito] = useState([]);
+
+  const addToCart = ( id, name, price, img, q = 1 ) => {
+    const productoPorAgregar = { id, name, price, img, q };
+    console.log('productoPorAgregar', productoPorAgregar)
+    
+    setCarrito([...carrito, productoPorAgregar]);
+    console.log('carrito :>> ', carrito);
+  };
+
   // seteando el contexto
 
-  const estadoGlobal = { pizzasInfo }
+  const estadoGlobal = { pizzasInfo, carrito, setCarrito, addToCart }
 
   return (
     <>
