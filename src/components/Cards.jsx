@@ -58,7 +58,7 @@ function Cards() {
                                     </Col>
                                     <Col>
                                         <Button
-                                            onClick={() => addToCart(pizza.id, pizza.name, pizza.price, pizza.img)}
+                                            onClick={() => addToCart(pizza.id)}
                                             variant="danger">
                                             <span className='bg-light rounded-pill p-1 me-1'>🛒</span>
                                             Añadir

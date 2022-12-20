@@ -1,12 +1,9 @@
-import React, {useContext} from 'react'
-
-import MyContext from '../my-context'
+import CartItem from "../components/CartItem";
 
 function Carrito() {
-
     
     return (
-        <div>Carrito</div>
+        <CartItem />
     )
 }
 

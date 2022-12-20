@@ -12,7 +12,7 @@ function DetailCard() {
 
     const { id } = useParams();
 
-    const { pizzasInfo } = useContext(MyContext);
+    const { pizzasInfo, addToCart } = useContext(MyContext);
 
     function aplicarMayuscula(str) {
         const palabras = str.split(" ").map(palabra => {
@@ -36,7 +36,7 @@ function DetailCard() {
                     <Col>
                         <img
                             src={`${selectedPizza.img}`}
-                            className="card-img-top m-2" alt="..."
+                            className="card-img-top m-2" alt={selectedPizza.name}
                         />
                     </Col>
                     <Col>
@@ -70,7 +70,12 @@ function DetailCard() {
                                     </p>
                                 </Col>
                                 <Col className="p-0">
-                                    <Button className="ms-5" variant="secondary">Agregar al carrito</Button>
+                                    <Button
+                                        className="ms-5"
+                                        variant="secondary"
+                                        onClick={() => addToCart( selectedPizza.id )}
+                                    >Agregar al carrito
+                                    </Button>
                                 </Col>
                             </Row>
                         </div>

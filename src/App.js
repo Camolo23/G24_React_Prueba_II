@@ -22,11 +22,11 @@ function App() {
 
   // armando el contexto 
 
-    // obtener pizzas
+  // obtener pizzas
 
   const endpoint = "/pizzas.json";
 
-  const [ pizzasInfo, setPizzasInfo ] = useState([]);
+  const [pizzasInfo, setPizzasInfo] = useState([]);
 
   const getPizzas = () => {
     fetch(endpoint).then(resp => resp.json())
@@ -39,21 +39,31 @@ function App() {
     getPizzas();
   }, []);
 
-    // gestionar carrito
+  // gestionar carrito
 
   const [carrito, setCarrito] = useState([]);
+  const [total, setTotal] = useState(0);
 
-  const addToCart = ( id, name, price, img, q = 1 ) => {
-    const productoPorAgregar = { id, name, price, img, q };
-    console.log('productoPorAgregar', productoPorAgregar)
-    
-    setCarrito([...carrito, productoPorAgregar]);
-    console.log('carrito :>> ', carrito);
+  const addToCart = (id) => {
+    const newItem = pizzasInfo.find(pizza => pizza.id === id);
+    const itemInCart = carrito.find(item => item.id === newItem.id);
+
+    itemInCart
+      ? setCarrito(carrito.map(item => item.id === newItem.id
+        ? { ...item, quantity: item.quantity + 1 }
+        : item))
+      : setCarrito([...carrito, { ...newItem, quantity: 1 }])
   };
+
+  useEffect(() => {
+    const valores = carrito.map(item => item.price * item.quantity);
+    const total = valores.reduce((a, b) => a + b, 0);
+    setTotal(total)
+  }, [carrito]);
 
   // seteando el contexto
 
-  const estadoGlobal = { pizzasInfo, carrito, setCarrito, addToCart }
+  const estadoGlobal = { pizzasInfo, carrito, setCarrito, addToCart, total };
 
   return (
     <>
@@ -65,7 +75,7 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/carrito' element={<Carrito />} />
             <Route path='/pizza/:id' element={<DetallePizza />} />
-            <Route path="*" element={ <NotFound /> } />
+            <Route path="*" element={<NotFound />} />
           </Routes>
 
         </BrowserRouter>
